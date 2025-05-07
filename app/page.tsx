@@ -1,12 +1,12 @@
-// import Navbar from "./Components/Navbar/Navbar";
+import HomeComponent from "./Components/HomeComponent/HomeComponent";
 
+export default function page() {
+    return (
 
-export default function Page() {
-  return (
-<h1 className=" mt-28 items-center flex flex-col ">
-  Estoy probando
-</h1>
-    // <Navbar/>
+        <div className="w-[1200px] mx-auto flex flex-col items-center justify-center">
+            <HomeComponent />
+        </div>
 
-  );
+    )
+
 }
