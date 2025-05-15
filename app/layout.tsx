@@ -4,11 +4,13 @@ import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import CircularWithValueLabel from './Components/Progress/Progress';
+import Progress from './Components/Progress/Progress';
+
 
 export default function ClientLayoutWrapper({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const pathname = usePathname();
+
 
   useEffect(() => {
     setLoading(true);
@@ -18,14 +20,15 @@ export default function ClientLayoutWrapper({ children }: { children: React.Reac
     return () => clearTimeout(timer);
   }, [pathname]);
   return (
+
     <html lang="en">
 
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen bg-white">
         < header>
           <Navbar />
         </header>
         <main className="flex-grow">
-          {loading ? <CircularWithValueLabel /> : children}
+          {loading ? <Progress/> : children}
         </main>
         <footer>
           <Footer />

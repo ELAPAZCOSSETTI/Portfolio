@@ -2,7 +2,7 @@ import * as React from 'react';
 import CircularProgress  from '@mui/material/CircularProgress';
 
 
-function GradientCircularProgress() {
+function Progress() {
   return (
     <div className="flex justify-center items-center h-screen">
 
@@ -23,7 +23,7 @@ function GradientCircularProgress() {
 export default function CustomizedProgressBars() {
   return (
   
-      <GradientCircularProgress />
+      <Progress />
 
   );
 }

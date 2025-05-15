@@ -6,31 +6,44 @@ import {
   Link,
   Input,
 } from "@nextui-org/react";
-import Avatar from "../Avatar/Avatar";
+import { useEffect, useState } from "react";
+
 export default function App() {
+  const [time, setTime] = useState(new Date());
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+    const interval = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(interval);
+  }, []);
+  const formattedTime = time.toLocaleTimeString("es-ES", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  });
+
 
 
   return (
-    <Navbar isBordered className="mt-6">
-      <NavbarContent className="mb-6">
+    <Navbar isBordered className="bg-color-#581845">
+      <NavbarContent className="">
         <NavbarContent >
-          <NavbarBrand >
-            <Avatar />
+          <NavbarBrand className=" rounded-none bg-transparent">
+            <img
+              className="h-16 "
+              src="https://www.wiber.com.ar/images/logo/logo.png"
+            />
           </NavbarBrand>
         </NavbarContent>
 
         <NavbarContent>
-          <NavbarItem className="pl-28">
-            <Link href="/search" className="text-black">
-              Comercios
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link className="text-black">Beneficios</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link className="text-black">Integraciones</Link>
-          </NavbarItem>
+            {hasMounted && formattedTime}
         </NavbarContent>
 
         <NavbarContent as="div" className="items-center" justify="end">
